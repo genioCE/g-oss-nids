@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  zeek:
+    image: blacktop/zeek:latest
+    command: ["-i", "eth0"]
+    network_mode: "host"
+    volumes: ["./pcap:/pcap"]
+  suricata:
+    image: jasonish/suricata:latest
+    command: ["-i", "eth0", "-k", "none"]
+    network_mode: "host"
+    volumes: ["./pcap:/pcap"]
